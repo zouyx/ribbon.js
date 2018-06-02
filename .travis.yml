@@ -1,0 +1,18 @@
+language: node_js
+
+sudo: required
+
+services:
+  - docker
+
+node_js:
+  - "4"
+  - "6"
+  - "8"
+
+script:
+  - npm run test
+
+cache:
+  directories:
+    - node_modules
