@@ -7,6 +7,7 @@ var assert = chai.assert
 var serversJson=""
 
 const Eureka = require('eureka-js-client').Eureka;
+// import Eureka from 'eureka-js-client';
 
 // example configuration
 const client = new Eureka({
