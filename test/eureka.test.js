@@ -7,7 +7,7 @@ const client = new Eureka({
     instance: {
         app: 'BAIDU-SERVICE',
         hostName: 'baidu.com',
-        ipAddr: '10.199.204.7',
+        ipAddr: 'localhost',
         vipAddress: 'baidu.com',
         statusPageUrl: 'http://localhost:9101',
         port: {
