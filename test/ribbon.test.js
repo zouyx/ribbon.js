@@ -1,6 +1,7 @@
-var Ribbon = require('../src/ribbon');
+// var Ribbon = require('../src/RibbonClient');
+import Ribbon from '../src/ribbon';
 
-var mocha = require('mocha');
+import mocha from 'mocha';
 var suite         = mocha.suite;
 var setup         = mocha.setup;
 var suiteSetup    = mocha.suiteSetup;
@@ -8,10 +9,10 @@ var test          = mocha.test;
 var teardown      = mocha.teardown;
 var suiteTeardown = mocha.suiteTeardown;
 
-var chai = require("chai");
+import chai from "chai";
 
 var assert = chai.assert
-var eureka = require("./eureka.test");
+import eureka from "./eureka.test";
 
 suite('ribbon', function () {
     suite('#chooseServer()', function () {
@@ -22,7 +23,8 @@ suite('ribbon', function () {
         test('should return choose server', function (done) {
             var servers = eureka.client.getInstancesByAppId('STORE-SERVICE');
             console.log("choosing server....")
-            var value = Ribbon.chooseServer(servers)
+            var ribbon=new Ribbon()
+            var value = ribbon.chooseServer(servers)
 
             console.log("checking result....")
             // assert(Array.isArray(value))
@@ -37,7 +39,8 @@ suite('ribbon', function () {
         test('should return home page url', function (done) {
             var servers = eureka.client.getInstancesByAppId('STORE-SERVICE');
             console.log("choosing server....")
-            var value = Ribbon.chooseServerUrl(servers)
+            var ribbon=new Ribbon()
+            var value = ribbon.chooseServerUrl(servers)
 
             console.log("checking result....")
             assert.isNotNaN(value)

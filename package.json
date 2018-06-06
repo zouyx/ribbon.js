@@ -22,6 +22,8 @@
   "homepage": "https://github.com/zouyx/ribbon.js#readme",
   "dependencies": {
     "eureka-js-client": "^4.4.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
     "mocha": "^5.2.0"
   },
   "devDependencies": {
