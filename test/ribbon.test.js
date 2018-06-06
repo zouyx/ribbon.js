@@ -1,34 +1,50 @@
 var Ribbon = require('../src/ribbon');
 
+var mocha = require('mocha');
+var suite         = mocha.suite;
+var setup         = mocha.setup;
+var suiteSetup    = mocha.suiteSetup;
+var test          = mocha.test;
+var teardown      = mocha.teardown;
+var suiteTeardown = mocha.suiteTeardown;
+
 var chai = require("chai");
 
 var assert = chai.assert
-
 var eureka = require("./eureka.test");
 
-describe('ribbon', function() {
-    describe('#chooseServer()', function() {
-        it('should return choose server', function() {
-            setTimeout(function() {
-                var servers = eureka.client.getInstancesByAppId('STORE-SERVICE');
-                var value=Ribbon.chooseServer(servers)
+suite('ribbon', function () {
+    suite('#chooseServer()', function () {
+        suiteSetup(function (done) {
+            this.timeout(1000); // A very long environment setup.
+            setTimeout(done, 1500);
+        });
+        test('should return choose server', function (done) {
+            var servers = eureka.client.getInstancesByAppId('STORE-SERVICE');
+            console.log("choosing server....")
+            var value = Ribbon.chooseServer(servers)
 
-                // assert(Array.isArray(value))
-                assert.isNotNaN(value)
-                assert.isString(value.app)
-                assert.equal(value.app,'STORE-SERVICE')
-            }, 5000);
+            console.log("checking result....")
+            // assert(Array.isArray(value))
+            assert.isNotNaN(value)
+            assert.isString(value.app)
+            assert.equal(value.app, 'STORE-SERVICE')
+            done()
         });
     });
 
-    describe('#chooseServerUrl()', function() {
-        it('should return home page url', function() {
-            var servers = JSON.parse(serversJson);
-            var ribbonInstance=new Ribbon()
-            var value=ribbonInstance.chooseServerUrl(servers)
+    suite('#chooseServerUrl()', function () {
+        test('should return home page url', function (done) {
+            var servers = eureka.client.getInstancesByAppId('STORE-SERVICE');
+            console.log("choosing server....")
+            var value = Ribbon.chooseServerUrl(servers)
+
+            console.log("checking result....")
             assert.isNotNaN(value)
             assert.isString(value)
-            assert.match(value,/^http/)
+            assert.match(value, /^http/)
+            done()
         });
     });
+
 });
