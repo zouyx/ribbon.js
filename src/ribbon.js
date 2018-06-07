@@ -1,8 +1,12 @@
 
+import Eureka from  'eureka-js-client';
 
 export default class Ribbon{
 
-    constructor() {
+    constructor(config={}) {
+        // this.eurekaClient = new Eureka(config);
+        //
+        // this.eurekaClient.start()
     }
 
     chooseServerUrl(servers) {
