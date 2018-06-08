@@ -35,19 +35,4 @@ suite('ribbon', function () {
         });
     });
 
-    suite('#chooseServerUrl()', function () {
-        test('should return home page url', function (done) {
-            var servers = eureka.client.getInstancesByAppId('STORE-SERVICE');
-            console.log("choosing server....")
-            var ribbon=new Ribbon()
-            var value = ribbon.chooseServerUrl(servers)
-
-            console.log("checking result....")
-            assert.isNotNaN(value)
-            assert.isString(value)
-            assert.match(value, /^http/)
-            done()
-        });
-    });
-
 });
