@@ -1,13 +1,4 @@
-// var Ribbon = require('../src/RibbonClient');
 import Ribbon from '../src/ribbon';
-
-import mocha from 'mocha';
-var suite         = mocha.suite;
-var setup         = mocha.setup;
-var suiteSetup    = mocha.suiteSetup;
-var test          = mocha.test;
-var teardown      = mocha.teardown;
-var suiteTeardown = mocha.suiteTeardown;
 
 import chai from "chai";
 

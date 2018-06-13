@@ -1,31 +1,29 @@
-
-export default class LinkList{
-    constructor(){
-        this.head = {};
-        this.last = {};
+export default class LinkList {
+    constructor() {
     }
 
     //insert node
-    insert(item){
-        var newNode={
-            item:item
+    insert(item) {
+        var newNode = {
+            item: item
         }
-        if(!this.head){
-            this.last=newNode;
-            return;
-        }else{
-            this.head.previous= newNode;
+        if (!this.head) {
+            this.last = newNode;
+        } else {
+            this.head.previous = newNode;
+            this.last.next=newNode
             newNode.next = this.head;
         }
 
         this.head = newNode;
     }
 
-    display(){
-        var currNode = this.head;
-        while (!(currNode.next == null)){
-            console.log(JSON.stringify(currNode.next.item),"\n")
-            currNode = currNode.next;
+    nextNode() {
+        if(!this.currNode){
+            this.currNode = this.head;
+            return this.currNode.item;
         }
+        this.currNode = this.currNode.next;
+        return this.currNode.item;
     }
 }
